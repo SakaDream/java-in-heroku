@@ -70,12 +70,13 @@
 			<version>${logback.version}</version>
 		</dependency>
 
-    <!--JSTL-->
+    <!--Commons-logging-->
     <dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
-		</dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.2</version>
+    </dependency>
+    
   </dependencies>
   
   <build>
@@ -101,11 +102,10 @@
 		  	<artifactId>tomcat7-maven-plugin</artifactId>
 			  <version>2.2</version>
   			<configuration>
-	  			<path>/Java-In-Heroku</path>
+	  			<path>/Downloader</path>
 		  	</configuration>
   		</plugin>
 
-      <!--Install Webapp Runner-->
 			<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -131,4 +131,5 @@
     </plugins>
 
   </build>
+
 </project>
