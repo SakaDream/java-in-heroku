@@ -73,7 +73,7 @@ public class Database {
         stmt = conn.createStatement();
         stmt.executeUpdate("UPDATE public.\"EMPLOYEES\" "
             + "SET \"FULLNAME\" = '" + e.getFullName() + "', \"ADDRESS\" = '" + e.getAddress() + "', \"EMAIL\" = '" + e.getEmail() + "', "
-            + "\"PHONE\" = '" + e.getPhone() + "', \"SALARY\" = '" + e.getSalary() + "' "
+            + "\"PHONE\" = '" + e.getPhone() + "', \"SALARY\" = " + e.getSalary() + " "
             + "WHERE \"ID\" = " + id);
     }
 
