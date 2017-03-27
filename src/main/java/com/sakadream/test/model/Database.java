@@ -29,9 +29,7 @@ public class Database {
         connect();
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"USERS\"" 
-            + "WHERE 'USERNAME' LIKE '" + username + "' AND 'PASSWORD' LIKE '" + password + "'");
-        echoQuery("SELECT * FROM public.\"USERS\"" 
-            + "WHERE 'USERNAME' LIKE '" + username + "' AND 'PASSWORD' LIKE '" + password + "'");
+            + " WHERE \"USERNAME\" LIKE '" + username + "' AND \"PASSWORD\" LIKE '" + password + "'");
         while(rs.next()) {
             return true;
         }
