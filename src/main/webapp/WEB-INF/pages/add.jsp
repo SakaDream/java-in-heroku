@@ -16,6 +16,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="https://java-in-heroku.herokuapp.com/">Java Spring Example</a>
+                        <a href="/logout.htm" class="btn btn-default">Logout</a>
                     </div>
                 </div>
             </nav>

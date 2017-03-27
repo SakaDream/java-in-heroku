@@ -32,6 +32,12 @@ public class HomeController {
         }
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(HttpSession session, ModelMap model) throws Exception {
         if (fn.checkSession(session)) {
