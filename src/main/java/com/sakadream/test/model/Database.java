@@ -58,7 +58,16 @@ public class Database {
         cleanConnection();
     }
 
-    public void edit(Employee e) throws Exception {
+    public void edit(int id, Employee e) throws Exception {
+        connect();
+        stmt = conn.createStatement();
+        stmt.executeUpdate("UPDATE INTO public.\"EMPLOYEES\" "
+            + "SET \"FULLNAME\" = '" + e.getFullName() + "', \"ADDRESS\" = '" + e.getAddress() + "', \"EMAIL\" = '" + e.getEmail() + "', "
+            + "\"PHONE\" = '" + e.getPhone() + "', \"SALARY\" = '" + e.getSalary() + "', "
+            + "WHERE ID = " + id);
+    }
+
+    public void delete() {
 
     }
 

@@ -13,23 +13,34 @@ import com.sakadream.test.model.Database;
 @RequestMapping(method = RequestMethod.POST)
 public class ProcessController {
     Database db = new Database();
+
     @RequestMapping("/login")
-    public String login(@RequestParam("username") String username, 
-        @RequestParam("password") String password, ModelMap model) throws Exception {
-            if(db.checkLogin(username, password)) {
-                model.addAttribute("list", db.showAllEmployees());
-                return "employees"; 
-            } else {
-                model.addAttribute("error", 1);
-                return "index";
-            }
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password,
+            ModelMap model) throws Exception {
+        if (db.checkLogin(username, password)) {
+            model.addAttribute("list", db.showAllEmployees());
+            return "employees";
+        } else {
+            model.addAttribute("error", 1);
+            return "index";
+        }
     }
 
     @RequestMapping("/add-post")
-    public String addPost(@RequestParam("fullname") String fullName, 
-        @RequestParam("address") String address, @RequestParam("email") String email, 
-        @RequestParam("phone") String phone, @RequestParam("salary") String salary) throws Exception {
-            db.add(new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
-            return "employees";
-        }
+    public String addPost(@RequestParam("fullname") String fullName, @RequestParam("address") String address,
+            @RequestParam("email") String email, @RequestParam("phone") String phone,
+            @RequestParam("salary") String salary, ModelMap model) throws Exception {
+        db.add(new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
+        model.addAttribute("list", db.showAllEmployees());
+        return "employees";
+    }
+
+    @RequestMapping("/edit-post")
+    public String editPost(@RequestParam("fullname") String fullName, @RequestParam("address") String address,
+            @RequestParam("email") String email, @RequestParam("phone") String phone,
+            @RequestParam("salary") String salary, @RequestParam("id") String id, ModelMap model) throws Exception {
+        db.edit(Integer.valueOf(id), new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
+        model.addAttribute("list", db.showAllEmployees());
+        return "employees";
+    }
 }

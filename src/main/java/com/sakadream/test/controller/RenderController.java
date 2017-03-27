@@ -27,4 +27,9 @@ public class RenderController {
     public String add() {
         return "add";
     }
+
+    @RequestMapping("/edit")
+    public String edit() {
+        return "edit";
+    }
 }
