@@ -25,6 +25,9 @@ public class Employee {
     public int getId() {
         return this.id;
     }
+    public String getFullName() {
+        return this.fullName;
+    }
     public String getAddress() {
         return this.address;
     }
@@ -36,6 +39,9 @@ public class Employee {
     }
     public int getSalary() {
         return this.salary;
+    }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
     public void setAddress(String address) {
         this.address = address;
