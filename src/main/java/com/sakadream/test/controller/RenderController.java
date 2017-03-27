@@ -31,11 +31,12 @@ public class RenderController {
     }
 
     @RequestMapping("/edit")
-    public String edit(@RequestParam("id") String id, ModelMap model) {
+    public String edit(@RequestParam("id") String id, ModelMap model) throws Exception {
         try {
             model.addAttribute("e", db.getEmployee(Integer.valueOf(id)));
             return "edit";
         } catch (Exception e) {
+            model.addAttribute("list", db.showAllEmployees());
             return "employees";
         }
     }
