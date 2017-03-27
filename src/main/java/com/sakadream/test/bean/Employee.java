@@ -1,13 +1,13 @@
 package com.sakadream.test.bean;
 
 public class Employee {
-    private Long id;
+    private int id;
     private String fullName;
     private String address;
     private String email;
     private String phone;
-    private Long salary;
-    public Employee(Long id, String fullName, String address, String email, String phone, Long salary) {
+    private int salary;
+    public Employee(int id, String fullName, String address, String email, String phone, int salary) {
         this.id = id;
         this.fullName = fullName;
         this.address = address;
@@ -15,14 +15,14 @@ public class Employee {
         this.phone = phone;
         this.salary = salary;
     }
-    public Employee(String fullName, String address, String email, String phone, Long salary) {
+    public Employee(String fullName, String address, String email, String phone, int salary) {
         this.fullName = fullName;
         this.address = address;
         this.email = email;
         this.phone = phone;
         this.salary = salary;
     }
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
     public String getAddress() {
@@ -34,7 +34,7 @@ public class Employee {
     public String getPhone() {
         return this.phone;
     }
-    public Long getSalary() {
+    public int getSalary() {
         return this.salary;
     }
     public void setAddress(String address) {
@@ -46,7 +46,7 @@ public class Employee {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public void setSalary(Long salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 }
