@@ -46,7 +46,7 @@
                                 <td>${e.salary}</td>
                                 <td>
                                     <a href="/edit.htm?id=${e.id}" class="fa fa-edit btn btn-default">Edit</a>
-                                    <a href="/delete.htm?id=${e.id}" class="fa fa-trash btn btn-danger" onclick="return comfirm('Do you want to remove this employee?')">Delete</a>
+                                    <a href="/delete.htm?id=${e.id}" class="fa fa-trash btn btn-danger" onclick="comfirm('Do you want to remove this employee?')">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>
