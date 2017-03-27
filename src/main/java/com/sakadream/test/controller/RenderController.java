@@ -36,6 +36,7 @@ public class RenderController {
             model.addAttribute("e", db.getEmployee(Integer.valueOf(id)));
             return "edit";
         } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("list", db.showAllEmployees());
             return "employees";
         }
