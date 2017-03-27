@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sakadream.test.model.Database;
 
@@ -11,6 +12,7 @@ import com.sakadream.test.model.Database;
 @RequestMapping(method = RequestMethod.GET)
 public class RenderController {
     Database db = new Database();
+
     @RequestMapping("/")
     public String index() {
         return "index";
@@ -29,7 +31,12 @@ public class RenderController {
     }
 
     @RequestMapping("/edit")
-    public String edit() {
-        return "edit";
+    public String edit(@RequestParam("id") String id, ModelMap model) {
+        try {
+            model.addAttribute("e", db.getEmployee(Integer.valueOf(id)));
+            return "edit";
+        } catch (Exception e) {
+            return "employees";
+        }
     }
 }
