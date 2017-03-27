@@ -16,10 +16,10 @@ public class ProcessController {
     public String login(@RequestParam("username") String username, 
         @RequestParam("password") String password, ModelMap model) throws Exception {
             if(db.checkLogin(username, password)) {
-                return "employees"; 
+                return "redirect:employees.htm"; 
             } else {
                 model.addAttribute("error", 1);
-                return "index";
+                return "redirect:index.htm";
             }
     }
 }
