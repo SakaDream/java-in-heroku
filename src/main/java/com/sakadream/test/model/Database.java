@@ -50,7 +50,12 @@ public class Database {
     }
 
     public void add(Employee e) throws Exception {
-
+        connect();
+        stmt = conn.createStatement();
+        stmt.executeUpdate("INSERT INTO public.\"EMPLOYEES\" (\"FULLNAME\", \"ADDRESS\", \"EMAIL\", \"PHONE\", \"SALARY\") "
+            + "VALUES " 
+            + "('" + e.getFullName() + "', '" + e.getAddress() + "', '" + e.getEmail() + "', '" + e.getPhone() + "', '" + e.getSalary() + "')");
+        cleanConnection();
     }
 
     public void edit(Employee e) throws Exception {
