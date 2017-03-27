@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import com.sakadream.test.bean.Employee;
 
-public class Database {
+public class Functions {
     Connection conn;
     Statement stmt;
 
@@ -25,12 +26,13 @@ public class Database {
         conn = DriverManager.getConnection(dbUrl, username, password);
     }
 
-    public Boolean checkLogin(String username, String password) throws Exception {
+    public Boolean checkLogin(String username, String password, HttpSession session) throws Exception {
         connect();
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"USERS\"" 
             + " WHERE \"USERNAME\" LIKE '" + username + "' AND \"PASSWORD\" LIKE '" + password + "'");
         while(rs.next()) {
+            session.setAttribute("username", username);
             return true;
         }
         return false;
@@ -92,5 +94,9 @@ public class Database {
 
     public void echoQuery(String query) {
         System.out.println(query);
+    }
+
+    public Boolean checkSession(HttpSession session) {
+        return (session == null) ? false : true;
     }
 }
