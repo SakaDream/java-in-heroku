@@ -71,7 +71,7 @@ public class Database {
     public void edit(int id, Employee e) throws Exception {
         connect();
         stmt = conn.createStatement();
-        stmt.executeUpdate("UPDATE public.\"EMPLOYEES\" "
+        stmt.executeUpdate("UPDATE \"EMPLOYEES\" "
             + "SET \"FULLNAME\" = '" + e.getFullName() + "', \"ADDRESS\" = '" + e.getAddress() + "', \"EMAIL\" = '" + e.getEmail() + "', "
             + "\"PHONE\" = '" + e.getPhone() + "', \"SALARY\" = " + e.getSalary() + " "
             + "WHERE \"ID\" = " + id);
