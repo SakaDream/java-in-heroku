@@ -27,10 +27,8 @@ public class Database {
 
     public List<Employee> showAllEmployees() throws Exception {
         List<Employee> list = new ArrayList<>();
-        if (conn == null)
-            connect();
-        if (stmt == null)
-            stmt = conn.createStatement();
+        connect();
+        stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"EMPLOYEES\"");
         while (rs.next()) {
             Employee e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
@@ -49,10 +47,8 @@ public class Database {
     }
 
     public void cleanConnection() throws Exception {
-        if (conn != null)
-            conn.close();
-        if (stmt != null)
-            stmt.close();
+        conn.close();
+        stmt.close();
     }
 
     public void echoQuery(String query) {
