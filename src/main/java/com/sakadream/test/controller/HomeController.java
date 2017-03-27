@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.HttpSessionMutexListener;
 
 import com.sakadream.test.bean.Employee;
 import com.sakadream.test.model.Functions;;
@@ -15,7 +14,7 @@ import com.sakadream.test.model.Functions;;
 @Controller
 public class HomeController {
     Functions fn = new Functions();
-    HttpSesion session;
+    HttpSession session;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
