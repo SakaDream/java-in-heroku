@@ -25,6 +25,17 @@ public class Database {
         conn = DriverManager.getConnection(dbUrl, username, password);
     }
 
+    public Boolean checkLogin(String username, String password) throws Exception {
+        connect();
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"USERS\"" 
+            + "WHERE 'USERNAME' = '" + username + "' AND 'PASSWORD' = '" + password + "'");
+        while(rs.next()) {
+            return true;
+        }
+        return false;
+    }
+
     public List<Employee> showAllEmployees() throws Exception {
         List<Employee> list = new ArrayList<>();
         connect();

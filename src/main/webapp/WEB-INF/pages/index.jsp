@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +15,14 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Java Spring Example</a>
+                <a class="navbar-brand" href="https://java-in-heroku.herokuapp.com/">Java Spring Example</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
         <div class="col-md-4 col-md-offset-4">
-            <form action="" method="POST" role="form">
+            <form action="/login.htm" method="POST" role="form">
                 <legend>Login</legend>
 
                 <div class="form-group">
@@ -31,6 +32,9 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
+                <c:if test="${error}">
+                    <div class="alert alert-danger" role="alert">Username or password invaild!</div>
+                </c:if>
             </form>
         </div>
     </div>
