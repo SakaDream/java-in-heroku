@@ -22,4 +22,9 @@ public class RenderController {
         db.cleanConnection();
         return "employees";
     }
+
+    @RequestMapping("/add")
+    public String add() {
+        return "add";
+    }
 }
