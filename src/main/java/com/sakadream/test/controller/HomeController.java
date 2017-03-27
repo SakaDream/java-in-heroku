@@ -40,7 +40,7 @@ public class HomeController {
             fn.cleanConnection();
             return "redirect:employees.htm";
         } else {
-            return "redirect:index.htm";
+            return "index";
         }
     }
 
