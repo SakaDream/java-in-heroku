@@ -19,6 +19,7 @@ public class RenderController {
     @RequestMapping("/employees")
     public String employees(ModelMap model) throws Exception {
         model.addAttribute("list", db.showAllEmployees());
+        db.cleanConnection();
         return "employees";
     }
 }

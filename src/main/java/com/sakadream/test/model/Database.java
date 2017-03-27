@@ -30,7 +30,7 @@ public class Database {
         if (conn == null)
             connect();
         if (stmt == null)
-            conn.createStatement();
+            stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"EMPLOYEES\"");
         while (rs.next()) {
             Employee e = new Employee(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
