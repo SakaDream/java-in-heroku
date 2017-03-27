@@ -40,7 +40,7 @@ public class Database {
         List<Employee> list = new ArrayList<>();
         connect();
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"EMPLOYEES\"");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"EMPLOYEES\" ORDER BY \"ID\" ASC");
         while (rs.next()) {
             Employee e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                     rs.getInt(6));
