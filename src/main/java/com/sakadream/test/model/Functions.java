@@ -97,6 +97,6 @@ public class Functions {
     }
 
     public Boolean checkSession(HttpSession session) {
-        return (session == null) ? false : true;
+        return (session.getAttribute("username") != null) ? true : false;
     }
 }
