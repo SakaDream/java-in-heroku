@@ -52,8 +52,7 @@ public class Database {
     public Employee getEmployee(int id) throws Exception {
         connect();
         stmt = conn.createStatement();
-        echoQuery("SELECT * FROM public.\"EMPLOYEES\" WHERE ID = " + id);
-        ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"EMPLOYEES\" WHERE ID = " + id);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM public.\"EMPLOYEES\" WHERE \"ID\" = " + id);
         while(rs.next()) {
             return new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
         }
