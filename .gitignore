@@ -50,5 +50,7 @@ buildNumber.properties
 *.bat
 *.py
 *.sql
+.env
+Procfile.test
 
 # End of https://www.gitignore.io/api/java,visualstudiocode,maven
