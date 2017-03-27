@@ -75,10 +75,14 @@ public class Database {
             + "SET \"FULLNAME\" = '" + e.getFullName() + "', \"ADDRESS\" = '" + e.getAddress() + "', \"EMAIL\" = '" + e.getEmail() + "', "
             + "\"PHONE\" = '" + e.getPhone() + "', \"SALARY\" = " + e.getSalary() + " "
             + "WHERE \"ID\" = " + id);
+        cleanConnection();
     }
 
-    public void delete() {
-
+    public void delete(int id) throws Exception {
+        connect();
+        stmt = conn.createStatement();
+        stmt.executeUpdate("DELETE INTO public.\"EMPLOYEES\" WHERE \"ID\" = " + id);
+        cleanConnection();
     }
 
     public void cleanConnection() throws Exception {

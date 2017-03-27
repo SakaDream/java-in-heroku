@@ -19,7 +19,7 @@ public class ProcessController {
             ModelMap model) throws Exception {
         if (db.checkLogin(username, password)) {
             model.addAttribute("list", db.showAllEmployees());
-            return "employees";
+            return "redirect:employees.htm";
         } else {
             model.addAttribute("error", 1);
             return "index";
@@ -32,7 +32,7 @@ public class ProcessController {
             @RequestParam("salary") String salary, ModelMap model) throws Exception {
         db.add(new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
         model.addAttribute("list", db.showAllEmployees());
-        return "employees";
+        return "redirect:employees.htm";
     }
 
     @RequestMapping("/edit-post")
@@ -41,6 +41,13 @@ public class ProcessController {
             @RequestParam("salary") String salary, @RequestParam("id") String id, ModelMap model) throws Exception {
         db.edit(Integer.valueOf(id), new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
         model.addAttribute("list", db.showAllEmployees());
-        return "employees";
+        return "redirect:employees.htm";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(@RequestParam("id") String id, ModelMap model) throws Exception {
+        db.delete(Integer.valueOf(id));
+        model.addAttribute("list", db.showAllEmployees());
+        return "redirect:employees.htm";
     }
 }
