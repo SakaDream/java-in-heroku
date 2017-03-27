@@ -40,4 +40,11 @@ public class RenderController {
             return "employees";
         }
     }
+
+    @RequestMapping("/delete")
+    public String delete(@RequestParam("id") String id, ModelMap model) throws Exception {
+        db.delete(Integer.valueOf(id));
+        model.addAttribute("list", db.showAllEmployees());
+        return "redirect:employees.htm";
+    }
 }
