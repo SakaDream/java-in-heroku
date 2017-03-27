@@ -18,7 +18,7 @@ public class ProcessController {
             if(db.checkLogin(username, password)) {
                 return "/employees.htm"; 
             } else {
-                model.addAttribute("error", true);
+                model.addAttribute("error", 1);
                 return "/";
             }
     }

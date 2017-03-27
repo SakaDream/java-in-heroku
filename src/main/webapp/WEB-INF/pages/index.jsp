@@ -32,7 +32,7 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
-                <c:if test="${error}">
+                <c:if test="${error == 1}">
                     <div class="alert alert-danger" role="alert">Username or password invaild!</div>
                 </c:if>
             </form>
