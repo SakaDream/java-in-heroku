@@ -81,7 +81,7 @@ public class Database {
     public void delete(int id) throws Exception {
         connect();
         stmt = conn.createStatement();
-        stmt.executeUpdate("DELETE INTO public.\"EMPLOYEES\" WHERE \"ID\" = " + id);
+        stmt.executeUpdate("DELETE FROM public.\"EMPLOYEES\" WHERE \"ID\" = " + id);
         cleanConnection();
     }
 
