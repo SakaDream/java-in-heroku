@@ -16,6 +16,7 @@ public class ProcessController {
     public String login(@RequestParam("username") String username, 
         @RequestParam("password") String password, ModelMap model) throws Exception {
             if(db.checkLogin(username, password)) {
+                model.addAttribute("list", db.showAllEmployees());
                 return "employees"; 
             } else {
                 model.addAttribute("error", 1);
