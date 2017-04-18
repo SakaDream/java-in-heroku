@@ -17,7 +17,7 @@ public class Functions {
 
     private void connect() throws Exception {
         Class.forName("org.postgresql.Driver");
-        URI dbUri = new URI("postgres://fszreuhy:wPkVguri33y2OoLS0OmJKOYZirOeWHVc@qdjjtnkv.db.elephantsql.com:5432/fszreuhy");
+        URI dbUri = new URI("postgres://abc:xxxxxxxxxxxxxxxxxxxx@qdjjtnkv.db.elephantsql.com:5432/fszreuhy");
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
