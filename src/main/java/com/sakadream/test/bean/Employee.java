@@ -7,6 +7,7 @@ public class Employee {
     private String email;
     private String phone;
     private int salary;
+
     public Employee(int id, String fullName, String address, String email, String phone, int salary) {
         this.id = id;
         this.fullName = fullName;
@@ -15,6 +16,7 @@ public class Employee {
         this.phone = phone;
         this.salary = salary;
     }
+
     public Employee(String fullName, String address, String email, String phone, int salary) {
         this.fullName = fullName;
         this.address = address;
@@ -22,9 +24,11 @@ public class Employee {
         this.phone = phone;
         this.salary = salary;
     }
+    
     public int getId() {
         return this.id;
     }
+    
     public String getFullName() {
         return this.fullName;
     }
