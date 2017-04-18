@@ -17,12 +17,21 @@ public class Functions {
 
     private void connect() throws Exception {
         Class.forName("org.postgresql.Driver");
-        URI dbUri = new URI("postgres://abc:xxxxxxxxxxxxxxxxxxxx@qdjjtnkv.db.elephantsql.com:5432/fszreuhy");
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        try {
+            URI dbUri = new URI("postgres://abc:xxxxxxxxxxxxxxxxxxxx@qdjjtnkv.db.elephantsql.com:5432/fszreuhy");
+            String username = dbUri.getUserInfo().split(":")[0];
+            String password = dbUri.getUserInfo().split(":")[1];
+            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
-        conn = DriverManager.getConnection(dbUrl, username, password);
+            conn = DriverManager.getConnection(dbUrl, username, password);
+        } catch(Exception e) {
+            URI dbUri = new URI(System.getenv("DATABASE_URL"));
+            String username = dbUri.getUserInfo().split(":")[0];
+            String password = dbUri.getUserInfo().split(":")[1];
+            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+            conn = DriverManager.getConnection(dbUrl, username, password);
+        }
     }
 
     public Boolean checkLogin(String username, String password, HttpSession session) throws Exception {
