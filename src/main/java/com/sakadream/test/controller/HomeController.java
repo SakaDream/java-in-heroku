@@ -25,17 +25,17 @@ public class HomeController {
             HttpSession session, ModelMap model) throws Exception {
         if (fn.checkLogin(username, password, session)) {
             model.addAttribute("list", fn.showAllEmployees());
-            return "employees";
+            return "redirect:employees.htm";
         } else {
             model.addAttribute("error", 1);
-            return "index";
+            return "redirect:/";
         }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         session.invalidate();
-        return "index";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
@@ -45,7 +45,7 @@ public class HomeController {
             fn.cleanConnection();
             return "employees";
         } else {
-            return "index";
+            return "redirect:/";
         }
     }
 
@@ -54,7 +54,7 @@ public class HomeController {
         if (fn.checkSession(session)) {
             return "add";
         } else {
-            return "index";
+            return "redirect:/";
         }
     }
 
@@ -65,9 +65,9 @@ public class HomeController {
         if (fn.checkSession(session)) {
             fn.add(new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
             model.addAttribute("list", fn.showAllEmployees());
-            return "employees";
+            return "redirect:employees.htm";
         } else {
-            return "index";
+            return "redirect:/";
         }
     }
 
@@ -79,10 +79,10 @@ public class HomeController {
                 return "edit";
             } catch (Exception e) {
                 model.addAttribute("list", fn.showAllEmployees());
-                return "employees";
+                return "redirect:employees.htm";
             }
         } else {
-            return "index";
+            return "redirect:/";
         }
     }
 
@@ -94,9 +94,9 @@ public class HomeController {
         if (fn.checkSession(session)) {
             fn.edit(Integer.valueOf(id), new Employee(fullName, address, email, phone, Integer.valueOf(salary)));
             model.addAttribute("list", fn.showAllEmployees());
-            return "employees";
+            return "redirec:temployees.htm";
         } else {
-            return "index";
+            return "redirect:/";
         }
     }
 
@@ -105,9 +105,9 @@ public class HomeController {
         if (fn.checkSession(session)) {
             fn.delete(Integer.valueOf(id));
             model.addAttribute("list", fn.showAllEmployees());
-            return "employees";
+            return "redirect:employees.htm";
         } else {
-            return "index";
+            return "redirect:/";
         }
     }
 }
